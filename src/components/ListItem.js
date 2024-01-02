@@ -1,0 +1,16 @@
+import { useDispatch } from "react-redux";
+import { deleteBook, salectBook, selectBookForEdit } from "../store/actions/book";
+
+
+const ListItem = ({ myBook }) => {
+  let disPatch = useDispatch()//  שליחה לדף הרדיוסר -בפועל הוא עובר דרך הסטור שהגדרנו בדף אינדקס גי אס
+  return (<>
+    <div>{myBook.name}</div>
+    <input type="button" onClick={()=>{disPatch(deleteBook(myBook.id))}} value="מחק" />
+    <input type="button" onClick={()=>{disPatch(selectBookForEdit(myBook))}} value="ערוך שיר" />
+    <input type="button" onClick={()=>{disPatch(salectBook(myBook))}} value="הצג פרטים נוספים" />
+  </>
+  );
+}
+
+export default ListItem;
